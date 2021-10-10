@@ -3,6 +3,13 @@ package code.top100;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Time complexity: \mathcal{O}(N \times 2^N)O(N×2
+ * N
+ *  ) to generate all subsets and then copy them into output list.
+ *
+ * Space complexity: \mathcal{O}(N)O(N). We are using O(N)O(N) space to maintain curr, and are modifying curr in-place with backtracking. Note that for space complexity analysis, we do not count space that is only used for the purpose of returning output, so the output array is ignored.
+ */
 public class Subsets {
 
     static List<List<Integer>> output = new ArrayList<>();

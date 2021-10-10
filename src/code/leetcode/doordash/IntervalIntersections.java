@@ -30,11 +30,13 @@ public class IntervalIntersections {
 
         while(pointer1<firstList.length && pointer2<secondList.length){
 
-            if(firstList[pointer1][1]>secondList[pointer2][0]){
+            //endTime of first interval should be more than start time of next interval,
+            //then only overlap will happen
+            if(firstList[pointer1][1]>secondList[pointer2][0] || firstList[pointer1][0]<secondList[pointer2][1]){
                 int startingPoint = Math.max(firstList[pointer1][0],secondList[pointer2][0]);
                 int endPoint = Math.min(firstList[pointer1][1],secondList[pointer2][1]);
-                if(startingPoint<=endPoint){
-                    ans.add(new int[]{startingPoint,endPoint});
+                if(startingPoint<=endPoint) {
+                    ans.add(new int[]{startingPoint, endPoint});
                 }
             }
 

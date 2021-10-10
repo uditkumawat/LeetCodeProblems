@@ -17,56 +17,59 @@ import java.util.Set;
 public class ValidSudoku {
 
     public static void main(String args[]){
+            
+        char board[][] = {{'5','3','.','.','7','.','.','.','.'}
+                        ,{'6','.','.','1','9','5','.','.','.'}
+                        ,{'.','9','8','.','.','.','.','6','.'}
+                        ,{'8','.','.','.','6','.','.','.','3'}
+                        ,{'4','.','.','8','.','3','.','.','1'}
+                        ,{'7','.','.','.','2','.','.','.','6'}
+                        ,{'.','6','.','.','.','.','2','8','.'}
+                        ,{'.','.','.','4','1','9','.','.','5'}
+                        ,{'.','.','.','.','8','.','.','7','9'}};
 
+        System.out.println(isValidSudoku(board));
     }
-    public boolean isValidSudoku(char[][] board) {
 
-        int n = 9;
+    public static boolean isValidSudoku(char[][] board) {
 
-        if(board==null || board.length==0){
-            return false;
-        }
+        int n = board.length;
+        int rows = board.length;
+        int cols = board[0].length;
 
-        Set<Character> rows[] = new HashSet[n];
-        Set<Character> cols[] = new HashSet[n];
-        Set<Character> boxes[] = new HashSet[n];
+        Set<Character> rowsHash[] = new HashSet[n];
+        Set<Character> colsHash[] = new HashSet[n];
+        Set<Character> boxesHash[] = new HashSet[n];
 
         for(int i=0;i<n;i++){
-            rows[i] = new HashSet<Character>();
-            cols[i] = new HashSet<Character>();
-            boxes[i] = new HashSet<Character>();
+            rowsHash[i] = new HashSet<Character>();
+            colsHash[i] = new HashSet<Character>();
+            boxesHash[i] = new HashSet<Character>();
         }
 
-        for(int r=0;r<board.length;r++){
-            for(int c=0;c<board[r].length;c++){
+        for(int row=0;row<rows;row++){
+            for(int col=0;col<cols;col++){
 
-                char k = board[r][c];
-
-                if(k!='.'){
-
-                    if(rows[r].contains(k)){
+                char c = board[row][col];
+                if(c!='.'){
+                    if(rowsHash[row].contains(c)){
                         return false;
                     }
+                    rowsHash[row].add(c);
 
-                    rows[r].add(k);
-
-                    if(cols[c].contains(k)){
+                    if(colsHash[col].contains(c)){
                         return false;
                     }
+                    colsHash[col].add(c);
 
-                    cols[c].add(k);
-
-                    int boxIndex = (r/3)*3+c/3;
-
-                    if(boxes[boxIndex].contains(k)){
+                    int boxIndex = (row/3)*3+col/3;
+                    if(boxesHash[boxIndex].contains(c)){
                         return false;
                     }
-
-                    boxes[boxIndex].add(k);
+                    boxesHash[boxIndex].add(c);
                 }
             }
         }
-
         return true;
     }
 }

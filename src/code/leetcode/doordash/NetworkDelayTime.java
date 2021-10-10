@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 //743. Network Delay Time
-
+//https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/
 /**
  * Time Complexity: O(N^2 + E)O(N
  * 2

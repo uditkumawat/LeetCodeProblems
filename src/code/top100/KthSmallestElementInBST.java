@@ -4,6 +4,10 @@ import apple.laf.JRSUIUtils;
 
 import java.util.Stack;
 
+/**
+ * Time complexity: \mathcal{O}(H + k)O(H+k), where HH is a tree height. This complexity is defined by the stack, which contains at least H + kH+k elements, since before starting to pop out one has to go down to a leaf. This results in \mathcal{O}(\log N + k)O(logN+k) for the balanced tree and \mathcal{O}(N + k)O(N+k) for completely unbalanced tree with all the nodes in the left subtree.
+ * Space complexity: \mathcal{O}(H)O(H) to keep the stack, where HH is a tree height. That makes \mathcal{O}(N)O(N) in the worst case of the skewed tree, and \mathcal{O}(\log N)O(logN) in the average case of the balanced tree.
+ */
 public class KthSmallestElementInBST {
 
     static class TreeNode{

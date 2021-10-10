@@ -9,6 +9,7 @@ import java.util.PriorityQueue;
  * findMedian: O(1)
  * Space: O(N)
  */
+//https://www.youtube.com/watch?v=EcNbRjEcb14
 public class MedianFromStream {
 
         public static void main(String args[]){
@@ -21,6 +22,10 @@ public class MedianFromStream {
             mf.addNum(5);
             System.out.println(mf.findMedian());
             mf.addNum(6);
+            System.out.println(mf.findMedian());
+            mf.addNum(7);
+            System.out.println(mf.findMedian());
+            mf.addNum(8);
             System.out.println(mf.findMedian());
         }
 
@@ -35,9 +40,16 @@ public class MedianFromStream {
             }
 
             public void addNum(int num) {
-                maxHeap.add(num);
-                minHeap.add(maxHeap.poll());
-                if (maxHeap.size() < minHeap.size()) {
+                if(maxHeap.isEmpty() || maxHeap.peek()>num){
+                    maxHeap.add(num);
+                }
+                else{
+                    minHeap.add(num);
+                }
+                if(maxHeap.size()>minHeap.size()+1){
+                    minHeap.add(maxHeap.poll());
+                }
+                else if(minHeap.size()>maxHeap.size()+1){
                     maxHeap.add(minHeap.poll());
                 }
             }
@@ -46,7 +58,7 @@ public class MedianFromStream {
                 if (maxHeap.size() == minHeap.size()) {
                     return (maxHeap.peek() + minHeap.peek()) * 1.0 / 2;
                 } else {
-                    return maxHeap.peek();
+                    return minHeap.peek();
                 }
             }
         }

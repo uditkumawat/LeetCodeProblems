@@ -15,7 +15,7 @@ public class DiagnolOrder {
                 {11,12,13,14,15},
                 {16,17,18,19,20}};
 
-        int nums[] = findDiagonalOrder(arr);
+        int nums[] = findDiagonalOrder2(arr);
 
         for(int i=0;i<nums.length;i++){
             System.out.print(nums[i]+" ");
@@ -65,5 +65,50 @@ public class DiagnolOrder {
         }
 
         return res;
+    }
+
+    public static int[] findDiagonalOrder2(int[][] mat) {
+
+        if(mat==null || mat.length==0){
+            return new int[0];
+        }
+
+        List<Integer> temp = new ArrayList<>();
+
+        int rows = mat.length;
+        int cols = mat[0].length;
+
+        int output[] = new int[rows*cols];
+        int index=0;
+        int diagnols = rows+cols-1;
+
+        boolean flag = true;
+
+        for(int d=0;d<diagnols;d++){
+
+            temp.clear();
+
+            int row = d<cols ? 0 : d-cols+1;
+            int col = d<cols ? d : cols-1;
+
+            while(row<rows && col>=0){
+                if(flag){
+                    temp.add(mat[row][col]);
+                }
+                else{
+                    temp.add(0,mat[row][col]);
+                }
+                row++;
+                col--;
+            }
+
+            for(int num:temp){
+                output[index++] = num;
+            }
+
+            flag = !flag;
+        }
+
+        return output;
     }
 }

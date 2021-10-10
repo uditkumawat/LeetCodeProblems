@@ -23,7 +23,7 @@ import java.util.Map;
 public class LetterCombinations {
 
     public static void main(String args[]){
-        String digits = "32";
+        String digits = "79";
         System.out.println(letterCombinations(digits));
     }
     public static List<String> letterCombinations(String digits) {

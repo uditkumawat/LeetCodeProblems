@@ -1,6 +1,10 @@
 package code.top100;
 
 //TC - O(m+n)
+
+/**
+ * The key to the time complexity analysis is noticing that, on every iteration (during which we do not return true) either row or col is is decremented/incremented exactly once. Because row can only be decremented mm times and col can only be incremented nn times before causing the while loop to terminate, the loop cannot run for more than n+mn+m iterations. Because all other work is constant, the overall time complexity is linear in the sum of the dimensions of the matrix.
+ */
 public class SearchInSortedMatrix {
 
     public static void main(String args[]){

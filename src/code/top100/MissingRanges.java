@@ -3,6 +3,8 @@ package code.top100;
 import java.util.ArrayList;
 import java.util.List;
 
+//TC - O(N)
+//SC - O(1)
 public class MissingRanges {
 
     public static void main(String args[]){
@@ -30,7 +32,7 @@ public class MissingRanges {
                 return list;
             }
 
-            if(nums[0]!=lower){
+            if(nums[0]!=lower && lower<nums[0]){
                 list.add(lower+"->"+(nums[0]-1));
             }
 
@@ -47,7 +49,7 @@ public class MissingRanges {
                 }
             }
 
-            if(nums[nums.length-1]!=upper){
+            if(nums[nums.length-1]!=upper && upper>nums[nums.length-1]){
                 list.add(nums[nums.length-1]+1+"->"+upper);
             }
 

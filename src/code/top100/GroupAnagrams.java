@@ -15,7 +15,6 @@ public class GroupAnagrams {
                 return new ArrayList<>();
             }
 
-            List<List<String>> list = new ArrayList<>();
             Map<String,List<String>> map = new HashMap<>();
             int count[] = new int[26];
 

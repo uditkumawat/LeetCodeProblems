@@ -1,5 +1,7 @@
 package code.leetcode.doordash;
 
+//TC - O(N)
+//SC - O(1)
 public class BestTimeToBuyAndSellStock {
 
     public static void main(String args[]){

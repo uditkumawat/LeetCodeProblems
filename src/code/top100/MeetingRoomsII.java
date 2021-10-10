@@ -15,7 +15,14 @@ import java.util.PriorityQueue;
  * If not, then we allocate a new room and add it to the heap.
  * After processing all the meetings, the size of the heap will tell us the number of rooms allocated. This will be the minimum number of rooms needed to accommodate all the meetings.
  */
-//TC - O(n)
+
+/**
+ * Time Complexity: O(N\log N)O(NlogN).
+ *
+ * There are two major portions that take up time here. One is sorting of the array that takes O(N\log N)O(NlogN) considering that the array consists of NN elements.
+ * Then we have the min-heap. In the worst case, all NN meetings will collide with each other. In any case we have NN add operations on the heap. In the worst case we will have NN extract-min operations as well. Overall complexity being (NlogN)(NlogN) since extract-min operation on a heap takes O(\log N)O(logN).
+ * Space Complexity: O(N)O(N) because we construct the min-heap and that can contain NN elements in the worst case as described above in the time complexity section. Hence, the space complexity is O(N)O(N).
+ */
 public class MeetingRoomsII {
 
     public static void main(String args[]){

@@ -2,6 +2,11 @@ package code.top100;
 
 //TC - O(n)
 //SC - O(1)
+
+/**
+ * Time Complexity: O(N) since we process each node exactly once.
+ * Space Complexity: O(1) since we don't make use of any additional data structure for traversing nodes on a particular level like the previous approach does.
+ */
 public class ConnectingPointersToNext {
 
     static class TreeNode{

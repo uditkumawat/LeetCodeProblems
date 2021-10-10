@@ -25,7 +25,7 @@ public class SpiralMatrix {
         int endRow = rows-1;
         int endCol = cols-1;
 
-        while(list.size()<rows*cols){
+        while(startRow<=endRow && startCol<=endCol){
 
             for(int i=startCol;i<=endCol;i++){
                 list.add(matrix[startRow][i]);

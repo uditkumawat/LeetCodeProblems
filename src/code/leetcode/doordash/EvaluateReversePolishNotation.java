@@ -2,6 +2,10 @@ package code.leetcode.doordash;
 
 import java.util.Stack;
 
+//TC - O(n) -where n is number of elements in array
+//Space Complexity : O(n)
+//
+//In the worst case, the stack will have all the numbers on it at the same time. This is never more than half the length of the input array.
 public class EvaluateReversePolishNotation {
 
     public static void main(String args[]){

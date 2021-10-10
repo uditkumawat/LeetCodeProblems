@@ -22,19 +22,22 @@ public class InorderSuccessor {
         root.left.left = new TreeNode(2);
         root.left.right = new TreeNode(4);
         root.left.left.left = new TreeNode(1);
+
+        TreeNode succ = inorderSuccessor(root,root.left.left);
+        System.out.println(succ.val);
     }
 
-    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+    public static TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
 
         TreeNode succ = null;
         TreeNode curr = root;
         while(curr!=null){
-            if(curr.val>p.val){
-                succ = curr;
-                curr = curr.left;
+            if(p.val>= curr.val){
+                curr = curr.right;
             }
             else{
-                curr = curr.right;
+                succ = curr;
+                curr = curr.left;
             }
         }
         return succ;

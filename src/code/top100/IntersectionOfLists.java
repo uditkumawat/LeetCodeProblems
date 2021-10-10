@@ -53,4 +53,17 @@ public class IntersectionOfLists {
         }
         return len;
     }
+
+    public static ListNode getIntersectionNodet(ListNode headA, ListNode headB) {
+
+        ListNode a = headA;
+        ListNode b = headA;
+
+        while(a!=b){
+            a = (a==null)?headB:a.next;
+            b = (b==null)?headA:b.next;
+        }
+
+        return a;
+    }
 }

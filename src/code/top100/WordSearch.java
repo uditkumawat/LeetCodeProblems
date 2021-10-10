@@ -26,7 +26,7 @@ public class WordSearch {
         char board[][] = {{'A','B','C','E'},
                 {'S','F','C','S'},
                 {'A','D','E','E'}};
-        String word = "ABCCED";
+        String word = "ABCB";
 
         System.out.println(exist(board,word));
     }
@@ -65,9 +65,9 @@ public class WordSearch {
 
         int dir[][] = {{0,-1},{-1,0},{0,1},{1,0}};
 
-        for(int i=0;i<4;i++){
+        visited[row][col] = true;
 
-            visited[row][col] = true;
+        for(int i=0;i<4;i++){
 
             int newRow = row+dir[i][0];
             int newCol = col+dir[i][1];
@@ -75,9 +75,9 @@ public class WordSearch {
             if(backTrack(board,visited,newRow,newCol,word,wordIndex+1)){
                 return true;
             }
-
-            visited[row][col] = false;
         }
+
+        visited[row][col] = false;
 
         return false;
     }

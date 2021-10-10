@@ -1,5 +1,7 @@
 package code.top100;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class PostOrderTraversal {
@@ -55,5 +57,27 @@ public class PostOrderTraversal {
         while(!s2.isEmpty()){
             System.out.println(s2.pop().val);
         }
+    }
+
+    public List<Integer> postorderNrary(TreeNode root){
+
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        LinkedList<Integer> output = new LinkedList<>();
+
+        if(root==null){
+            return output;
+        }
+
+        stack.add(root);
+        while(!stack.isEmpty()){
+            TreeNode curr = stack.pollLast();
+            output.addFirst(curr.val);
+
+            stack.push(curr.left);
+            stack.push(curr.right);
+
+        }
+
+        return output;
     }
 }

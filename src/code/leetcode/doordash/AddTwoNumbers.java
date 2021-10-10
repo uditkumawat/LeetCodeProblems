@@ -1,7 +1,7 @@
 package code.leetcode.doordash;
 
-import code.top100.AddTwoLists;
-
+//TC - O(Max(m,n))
+//SC - O(max(m,n))
 public class AddTwoNumbers {
 
     static class ListNode{
@@ -45,8 +45,8 @@ public class AddTwoNumbers {
         int carry = 0;
         int sum = 0;
 
-        ListNode head = new ListNode();
-        ListNode prev = new ListNode();;
+        ListNode head;
+        ListNode prev = new ListNode();
 
         head = prev;
 

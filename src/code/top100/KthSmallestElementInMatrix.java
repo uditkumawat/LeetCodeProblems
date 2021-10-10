@@ -55,7 +55,7 @@ public class KthSmallestElementInMatrix {
             int row = node.getRow();
             int col = node.getCol();
 
-            if(col<cols){
+            if(col+1<cols){
                 int value = matrix[row][col+1];
                 pq.add(new HeapNode(row,col+1,value));
             }

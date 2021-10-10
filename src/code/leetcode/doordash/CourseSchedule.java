@@ -5,6 +5,7 @@ import java.util.List;
 
 //youtube tech dose
 // TC - O(V+E)
+ //SC - O(V+E)
 public class CourseSchedule {
 
     public static void main(String args[]){

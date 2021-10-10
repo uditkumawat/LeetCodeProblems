@@ -2,6 +2,7 @@ package code.top100;
 
 import java.util.Arrays;
 
+//TC - O(n^2)
 public class LongestIncreasingSubsequence {
 
     public static void main(String args[]){

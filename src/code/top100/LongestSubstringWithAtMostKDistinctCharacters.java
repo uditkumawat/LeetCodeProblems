@@ -1,10 +1,12 @@
 package code.top100;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 //TC - O(N)
 //SC - O(K) hashmap for k+1 distinct characters
+//https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/solution/
 public class LongestSubstringWithAtMostKDistinctCharacters {
 
     public static void main(String args[]){
@@ -15,30 +17,28 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
     }
     public static int lengthOfLongestSubstringKDistinct(String s, int k) {
 
+        int n = s.length();
+        if (n * k == 0) {
+            return 0;
+        }
         int left = 0;
-        int maxLength = 0;
+        int right = 0;
 
-        Map<Character,Integer> map = new HashMap<>();
+        Map<Character, Integer> rightmostPosition = new HashMap<>();
 
-        for(int right=0;right<s.length();right++){
+        int maxLength = 1;
 
-            char c = s.charAt(right);
-            map.put(c, map.getOrDefault(c,0)+1);
+        while (right < n) {
+            rightmostPosition.put(s.charAt(right), right++);
 
-            while(map.size()>k){
-                char leftChar = s.charAt(left);
-                map.put(leftChar,map.get(leftChar)-1);
-
-                if(map.get(leftChar)==0){
-                    map.remove(leftChar);
-                }
-
-                left++;
+            if (rightmostPosition.size() == k + 1) {
+                int lowestIndex = Collections.min(rightmostPosition.values());
+                rightmostPosition.remove(s.charAt(lowestIndex));
+                left = lowestIndex + 1;
             }
 
-            maxLength = Math.max(maxLength,right-left+1);
+            maxLength = Math.max(maxLength, right - left);
         }
-
         return maxLength;
     }
 }

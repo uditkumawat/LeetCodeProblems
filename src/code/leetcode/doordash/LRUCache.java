@@ -3,6 +3,7 @@ package code.leetcode.doordash;
 import java.util.HashMap;
 import java.util.Map;
 
+//SC - O(capcity)
 public class LRUCache {
 
     public static void main(String args[]){

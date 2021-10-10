@@ -1,5 +1,7 @@
 package code.leetcode.doordash;
 
+//TC-O(m*n)
+//SC-O(m*n)
 public class CountOfSquareSubMatrices {
 
     public static void main(String args[]){

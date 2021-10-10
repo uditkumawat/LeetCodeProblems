@@ -1,5 +1,6 @@
 package code.top100;
 
+//TC - O(max(m,n))
 public class AddTwoLists {
 
     static class ListNode{
