@@ -3,6 +3,9 @@ package code.facebook;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * https://www.youtube.com/watch?v=hEhf_oz3wsM
+ */
 public class RomanToInteger {
 
     public static void main(String args[]){
@@ -25,31 +28,20 @@ public class RomanToInteger {
         return getIntFromRoman(s);
     }
 
+
     public int getIntFromRoman(String s){
         Map<Character,Integer> map = getMappings();
 
         int res = 0;
 
-        //moving from backwards
-        for(int i=s.length()-1;i>=0;i--){
-
-            char current = s.charAt(i);
-
-            if(i==s.length()-1){
-                res = res+ map.get(current);
-            }
-            else{
-                char prev = s.charAt(i+1);
-                int valueOfCurrent = map.get(current);
-                int valueOfPrev = map.get(prev);
-                if(valueOfCurrent<valueOfPrev){
-                    res = res - valueOfCurrent;
-                }
-                else{
-                    res = res + valueOfCurrent;
-                }
-            }
-        }
+       for(int i=0;i<s.length();i++){
+           if(i>0 && map.get(s.charAt(i))>map.get(s.charAt(i-1))){
+               res+=map.get(s.charAt(i))-2*map.get(s.charAt(i-1));
+           }
+           else{
+               res+=map.get(s.charAt(i));
+           }
+       }
         return res;
     }
 

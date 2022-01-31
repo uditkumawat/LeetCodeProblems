@@ -20,35 +20,40 @@ public class WordSearchII {
     }
 
     static class TrieClass {
-        class TrieNode {
-            public char c;
-            public boolean isEnd;
-            public TrieNode children[];
-            public String word;
 
-            TrieNode(char c) {
-                this.c = c;
-                this.isEnd = false;
-                this.children = new TrieNode[26];
-                this.word = null;
-            }
+        class TrieNode{
+           public char c;
+           public boolean isEnd;
+           public TrieNode children[];
+           public String word;
+           TrieNode(char c){
+               this.c = c;
+               this.children = new TrieNode[26];
+               this.isEnd = false;
+               this.word = null;
+           }
         }
 
         TrieNode root = new TrieNode('\0');
 
-        public void insert(String word) {
-            TrieNode curr = root;
-            for (int i = 0; i < word.length(); i++) {
-                char c = word.charAt(i);
-                if (curr.children[c - 'a'] == null) {
-                    curr.children[c - 'a'] = new TrieNode(c);
-                }
-                curr = curr.children[c - 'a'];
-            }
-            curr.isEnd = true;
-            curr.word = word;
+        public TrieNode createNewNode(char c){
+            TrieNode newNode = new TrieNode(c);
+            return newNode;
         }
 
+        public void insert(String word){
+            TrieNode currentNode = root;
+            for(char c:word.toCharArray()){
+                int index = c-'a';
+                if(currentNode.children[index]==null){
+                    currentNode.children[index] = createNewNode(c);
+                }
+                currentNode = currentNode.children[index];
+            }
+            currentNode.isEnd = true;
+            currentNode.word = word;
+        }
+        
         public boolean search(String word) {
             TrieNode node = getNode(word);
             return node != null && node.isEnd == true && node.word.equals(word);
