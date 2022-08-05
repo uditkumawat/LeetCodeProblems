@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Stack;
 
 //https://www.youtube.com/watch?v=thL70BR3yMA
+//https://www.youtube.com/watch?v=qVBS4IUPeQg
 public class MinimumRemoveToMakeValidParantheses {
 
     public String removeUnwanted(String str){

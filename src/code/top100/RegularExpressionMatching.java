@@ -13,6 +13,8 @@ public class RegularExpressionMatching {
     }
     public static boolean isMatch(String s, String p) {
 
+        //y axis has string
+        //x axis has pattern
         int rows = s.length()+1;
         int cols = p.length()+1;
         boolean T[][] = new boolean[rows][cols];

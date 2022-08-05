@@ -1,5 +1,6 @@
 package code.facebook;
 
+//https://leetcode.com/problems/valid-palindrome-ii/
 //TC - O(N)
 public class ValidPalindromeII {
 
@@ -11,15 +12,15 @@ public class ValidPalindromeII {
     }
     public boolean validPalindrome(String s) {
 
-        int i = 0;
-        int j = s.length()-1;
+        int left = 0;
+        int right = s.length()-1;
 
-        while(i<j){
-            if(s.charAt(i)!=s.charAt(j)){
-                return isPalindrome(s,i++,j) || isPalindrome(s,i,j--);
+        while(left<right){
+            if(s.charAt(left)!=s.charAt(right)){
+                return isPalindrome(s,left++,right) || isPalindrome(s,left,right--);
             }
-            i++;
-            j--;
+            left++;
+            right--;
         }
 
         return true;

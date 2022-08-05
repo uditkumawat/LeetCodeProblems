@@ -20,29 +20,27 @@ public class DailyTemperatures {
     }
     public static int[] dailyTemperatures(int[] temperatures) {
 
-        Stack<Integer> nge = new Stack<>();
-
-        int n = temperatures.length;
-
-        int output[] = new int[n];
-        output[n-1] = 0;
-
-        for(int i=n-1;i>=0;i--){
-
-            while(!nge.isEmpty() && temperatures[nge.peek()]<temperatures[i]){
-                nge.pop();
-            }
-
-            if(nge.isEmpty()){
-                output[i] = 0;
-            }
-            else{
-                output[i] = nge.peek()-i;
-            }
-
-            nge.push(i);
+        if(temperatures==null || temperatures.length==0){
+            return new int[0];
         }
 
-        return output;
+        int len = temperatures.length;
+
+        int res[] = new int[len];
+
+        Stack<Integer> st = new Stack<Integer>();
+
+        for(int i=0;i<len;i++){
+
+            int currentTemp = temperatures[i];
+
+            while(!st.isEmpty() && temperatures[st.peek()]<currentTemp){
+                int prevDay = st.pop();
+                res[prevDay] = i - prevDay;
+            }
+            st.push(i);
+        }
+
+        return res;
     }
 }

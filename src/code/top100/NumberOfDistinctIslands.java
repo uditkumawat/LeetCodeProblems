@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 //https://www.youtube.com/watch?v=c1ZxUOHlulo
+//TC - O(m*n)
+//SC - O(m*n) - recursion
 public class NumberOfDistinctIslands {
 
     public static void main(String args[]){

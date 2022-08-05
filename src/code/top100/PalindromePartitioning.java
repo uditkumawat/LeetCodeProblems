@@ -8,6 +8,7 @@ import java.util.List;
  * N
  *  ), where NN is the length of string ss. This is the worst-case time complexity when all the possible substrings are palindrome.
  */
+//https://www.youtube.com/watch?v=WBgsABoClE0
 public class PalindromePartitioning {
 
 
