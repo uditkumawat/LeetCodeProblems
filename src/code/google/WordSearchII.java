@@ -84,7 +84,7 @@ public class WordSearchII {
     }
 
     private boolean isValidMove(char board[][],String word,int row,int col,int rows,int cols,int index){
-        if(row<0 || row>=rows || col<0 || col>=cols || board[row][col]=='$' || board[row][col]!=word.charAt(index)){
+        if(row<0 || row>=rows || col<0 || col>=cols || board[row][col]!=word.charAt(index)){
             return false;
         }
         return true;

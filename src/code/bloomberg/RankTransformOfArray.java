@@ -1,0 +1,19 @@
+package code.bloomberg;
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+//https://leetcode.com/problems/rank-transform-of-an-array/discuss/489753/JavaC%2B%2BPython-HashMap
+public class RankTransformOfArray {
+
+    public int[] arrayRankTransform(int[] arr) {
+        int[] A = Arrays.copyOf(arr, arr.length);
+        Arrays.sort(A);
+        HashMap<Integer, Integer> rank = new HashMap<>();
+        for (int x : A)
+            rank.putIfAbsent(x, rank.size() + 1);
+        for (int i = 0; i < arr.length; ++i)
+            A[i] = rank.get(arr[i]);
+        return A;
+    }
+}

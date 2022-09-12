@@ -2,32 +2,45 @@ package code.leetcode.studyplan75;
 
 import code.facebook.TreeNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //https://leetcode.com/problems/path-sum-iii/
-//TC - O(n^2)
-//SC - O(logn) - heihgt of tree
+//TC - O(n)
+//SC - O(n) - heihgt of tree
 public class PathSumIII {
 
-    private int ans = 0;
+    int count = 0;
+    Map<Long,Integer> map = new HashMap();
     public int pathSum(TreeNode root, int targetSum) {
 
         if(root==null){
             return 0;
         }
-        helper(root,targetSum);
-        pathSum(root.left,targetSum);
-        pathSum(root.right,targetSum);
-        return ans;
+        helper(root,targetSum,0);
+        return count;
     }
 
-    public void helper(TreeNode node,int targetSum){
+    public void helper(TreeNode node,int targetSum,long currSum){
         if(node==null){
             return;
         }
-        if(node.val==targetSum){
-            ans++;
+        currSum = currSum + node.val;
+
+        //targetSum found in path startgin from root
+        if(currSum==targetSum){
+            count++;
         }
-        targetSum = targetSum - node.val;
-        helper(node.left,targetSum);
-        helper(node.right,targetSum);
+
+        //targetSum found in path startign in between , not through root
+        count = count + map.getOrDefault(currSum-targetSum,0);
+
+        map.put(currSum,map.getOrDefault(currSum,0)+1);
+
+        helper(node.left,targetSum,currSum);
+        helper(node.right,targetSum,currSum);
+
+        map.put(currSum,map.get(currSum)-1);
+
     }
 }

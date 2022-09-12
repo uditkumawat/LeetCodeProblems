@@ -5,6 +5,7 @@ import java.util.Stack;
 //https://leetcode.com/problems/daily-temperatures/submissions/
 //TC - O(N)
 //SC - O(N)
+//https://www.youtube.com/watch?v=bMrcBdwRh2U
 public class DailyTemperatures {
 
     public int[] dailyTemperatures(int[] temperatures) {
@@ -24,8 +25,8 @@ public class DailyTemperatures {
             int currentTemp = temperatures[i];
 
             while(!st.isEmpty() && temperatures[st.peek()]<currentTemp){
-                int prevDay = st.pop();
-                res[prevDay] = i - prevDay;
+                res[st.peek()] = i - st.peek();
+                st.pop();
             }
             st.push(i);
         }

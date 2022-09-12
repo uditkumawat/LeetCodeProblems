@@ -1,6 +1,7 @@
 package code.amazon;
 
 //https://leetcode.com/problems/robot-bounded-in-circle/
+//https://www.youtube.com/watch?v=RNCRxxQx44I
 public class RobotBoundedInCircle {
 
     public static void main(String args[]){
@@ -16,7 +17,7 @@ public class RobotBoundedInCircle {
         int x = 0;
         int y = 0;
 
-        String dir = null;
+        String dir = "N";
 
         for(char c:instructions.toCharArray()){
             if(c=='G'){
@@ -58,11 +59,20 @@ public class RobotBoundedInCircle {
                     dir="S";
                 }
                 else{
-                    dir="W";
+                    dir="N";
                 }
             }
         }
 
-        return x==0 && y==0;
+
+        if(x==0 && y==0){
+            return true;
+        }
+
+        if(dir.equals("N")){
+            return false;
+        }
+
+        return true;
     }
 }

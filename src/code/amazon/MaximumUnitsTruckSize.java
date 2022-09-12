@@ -2,6 +2,7 @@ package code.amazon;
 
 import java.util.Arrays;
 //https://leetcode.com/problems/maximum-units-on-a-truck/solution/
+//https://www.youtube.com/watch?v=PltNSHdprc8&t=5s
 public class MaximumUnitsTruckSize {
 
     public int maximumUnits(int[][] boxTypes, int truckSize) {

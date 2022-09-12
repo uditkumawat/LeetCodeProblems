@@ -2,6 +2,7 @@ package code.bloomberg;
 
 import java.util.Arrays;
 
+//https://leetcode.com/problems/valid-triangle-number/discuss/128135/A-similar-O(n2)-solution-to-3-Sum
 //TC - O(n^2)
 public class ValidTriangleNumber {
 
@@ -11,15 +12,18 @@ public class ValidTriangleNumber {
 
         Arrays.sort(nums);
 
-        for(int i=0;i<nums.length;i++){
-            int k = i+2;
-            for(int j=i+1;j<nums.length-1 && nums[i]!=0;j++){
+        for(int k=nums.length-1;k>1;k--){
+            int i = 0;
+            int j = k-1;
 
-                while(k<nums.length && nums[i]+nums[j]>nums[k]){
-                    k++;
+            while(i<j){
+                if(nums[i]+nums[j]>nums[k]){
+                    count = count + j-i;
+                    j--;
                 }
-
-                count = count + k-j-1;
+                else{
+                    i++;
+                }
             }
         }
 

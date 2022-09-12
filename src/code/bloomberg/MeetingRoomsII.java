@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 //SC - O(N)
 
 /**
- * Time Complexity: O(N\log N)O(NlogN).
+ * Time Complexity: O(NlogN).
  *
  * There are two major portions that take up time here. One is sorting of the array that takes O(N\log N)O(NlogN) considering that the array consists of NN elements.
  * Then we have the min-heap. In the worst case, all NN meetings will collide with each other. In any case we have NN add operations on the heap. In the worst case we will have NN extract-min operations as well. Overall complexity being (NlogN)(NlogN) since extract-min operation on a heap takes O(\log N)O(logN).

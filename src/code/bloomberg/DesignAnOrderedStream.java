@@ -6,6 +6,7 @@ import java.util.List;
 //https://leetcode.com/problems/design-an-ordered-stream/submissions/
 //TC - O(N)
 //SC - O(N)
+//https://leetcode.com/problems/design-an-ordered-stream/discuss/935933/Java-Straightforward-Solution!
 public class DesignAnOrderedStream {
 
     int ptr;

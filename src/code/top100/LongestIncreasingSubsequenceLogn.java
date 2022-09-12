@@ -10,42 +10,34 @@ public class LongestIncreasingSubsequenceLogn {
         System.out.println(lengthOfLIS(arr));
     }
 
-    public static int lengthOfLIS(int[] nums) {
-
-        ArrayList<Integer> sub = new ArrayList<>();
-        sub.add(nums[0]);
-
-        for(int i=1;i<nums.length;i++){
-            int num = nums[i];
-            if(num>sub.get(sub.size()-1)){
-                sub.add(num);
-            }
-            else{
-                int j = binarySearch(sub,num);
-                sub.set(j,num);
-            }
+    public static int findPositionToReplace(int[] a, int low, int high, int x) {
+        int mid;
+        while (low <= high) {
+            mid = low + (high - low) / 2;
+            if (a[mid] == x)
+                return mid;
+            else if (a[mid] > x)
+                high = mid - 1;
+            else
+                low = mid + 1;
         }
-
-        return sub.size();
+        return low;
     }
 
-    public static int binarySearch(List<Integer> sub, int num){
-        int left = 0;
-        int right = sub.size()-1;
-        int mid = 0;
-        int res = 0;
-        while(left<right){
-            mid = left+(right-left)/2;
-            if(sub.get(mid)==num){
-                return mid;
-            }else if(sub.get(mid)>num){
-                right = mid-1;
-            }
-            else{
-                res = mid;
-                left = mid+1;
+    public static int lengthOfLIS(int[] nums) {
+        if (nums == null | nums.length == 0)
+            return 0;
+        int n = nums.length, len = 0;
+        int[] increasingSequence = new int[n];
+        increasingSequence[len++] = nums[0];
+        for (int i = 1; i < n; i++) {
+            if (nums[i] > increasingSequence[len - 1])
+                increasingSequence[len++] = nums[i];
+            else {
+                int position = findPositionToReplace(increasingSequence, 0, len - 1, nums[i]);
+                increasingSequence[position] = nums[i];
             }
         }
-        return res;
+        return len;
     }
 }

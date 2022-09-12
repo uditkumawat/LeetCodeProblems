@@ -3,6 +3,12 @@ package code.bloomberg;
 import java.util.*;
 
 //https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/solution/
+
+/**
+ * Time complexity : O(N)O(N), with NN being the number of operations. All of our operations are O(1)O(1), giving N * O(1) = O(N)N∗O(1)=O(N).
+ *
+ * Space complexity : O(N)O(N), with NN being the number of operations. The worst case scenario is if we get NN add operations, in which case our ArrayList and our HashMap grow to size NN.
+ */
 public class InsertDeleteRemoveWithDuplicates {
 
     List<Integer> list;

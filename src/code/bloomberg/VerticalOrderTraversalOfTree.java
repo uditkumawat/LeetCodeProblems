@@ -2,13 +2,21 @@ package code.bloomberg;
 
 import code.facebook.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
+import java.util.*;
 
 //https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/submissions/
 public class VerticalOrderTraversalOfTree {
+
+    class Entry{
+        int row;
+        int col;
+        int val;
+        Entry(int row,int col,int val){
+            this.row = row;
+            this.col = col;
+            this.val = val;
+        }
+    }
 
     public List<List<Integer>> verticalTraversal(TreeNode root) {
 
@@ -17,34 +25,46 @@ public class VerticalOrderTraversalOfTree {
             return list;
         }
 
-        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap();
+        List<Entry> temp = new ArrayList();
+        dfs(root,0,0,temp);
 
-        dfs(root,0,0,map);
+        Collections.sort(temp,(Entry e1, Entry e2)->{
 
-        for(TreeMap<Integer,PriorityQueue<Integer>> value:map.values()){
-            list.add(new ArrayList<Integer>());
-            for(PriorityQueue<Integer> pq:value.values()){
-                while(!pq.isEmpty()){
-                    list.get(list.size()-1).add(pq.poll());
+            if(e1.col==e2.col){
+                if(e1.row==e2.row){
+                    return e1.val-e2.val;
+                }
+                else{
+                    return e1.row-e2.row;
                 }
             }
+            else{
+                return e1.col-e2.col;
+            }
+        });
+
+        TreeMap<Integer,List<Integer>> map = new TreeMap();
+        for(Entry entry:temp){
+            if(!map.containsKey(entry.col)){
+                map.put(entry.col,new ArrayList());
+            }
+            map.get(entry.col).add(entry.val);
+        }
+
+        //System.out.println(map);
+        for(List<Integer> l:map.values()){
+            list.add(l);
         }
 
         return list;
     }
 
-    public void dfs(TreeNode root,int x,int y,TreeMap<Integer,TreeMap<Integer,PriorityQueue<Integer>>> map){
+    public void dfs(TreeNode root,int row,int col,List<Entry> list){
         if(root==null){
             return;
         }
-        if(!map.containsKey(x)){
-            map.put(x,new TreeMap<>());
-        }
-        if(!map.get(x).containsKey(y)){
-            map.get(x).put(y,new PriorityQueue<>());
-        }
-        map.get(x).get(y).add(root.val);
-        dfs(root.left,x-1,y+1,map);
-        dfs(root.right,x+1,y+1,map);
+        list.add(new Entry(row,col,root.val));
+        dfs(root.left,row+1,col-1,list);
+        dfs(root.right,row+1,col+1,list);
     }
 }

@@ -1,6 +1,6 @@
 package code.designpatterns.observer;
 
-public class Subscriber {
+public class Subscriber implements Observer {
 
     private String name;
     private Channel channel;
@@ -8,6 +8,8 @@ public class Subscriber {
     public Subscriber(String name){
         this.name = name;
     }
+
+    @Override
     public void update(){
         System.out.println("Notified Subscriber "+name);
     }

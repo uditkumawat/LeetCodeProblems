@@ -47,6 +47,7 @@ public class DesignUndergroundSystem {
     public String getCombinedName(String s1,String s2){
         return s1+","+s2;
     }
+
     class Event{
         int id;
         String stationName;

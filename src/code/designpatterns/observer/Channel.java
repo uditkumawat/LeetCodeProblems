@@ -3,32 +3,36 @@ package code.designpatterns.observer;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Channel {
+public class Channel implements Observable {
 
     private String channelName;
-    private Set<Subscriber> subs = new HashSet<>();
+    private Set<Observer> observers = new HashSet<>();
     private String title;
 
     public Channel(String channelName){
         this.channelName = channelName;
     }
 
-    public void subscribe(Subscriber subscriber){
-        subs.add(subscriber);
+    @Override
+    public void add(Observer observer){
+        observers.add(observer);
     }
 
-    public void unSubscribe(Subscriber subscriber){
-        subs.remove(subscriber);
+    @Override
+    public void remove(Observer observer){
+        observers.remove(observer);
     }
-    public void notifyAllSubs(){
-        for(Subscriber subscriber:subs){
-            subscriber.update();
+
+    @Override
+    public void notifyAllObservers(){
+        for(Observer observer:observers){
+            observer.update();
         }
     }
 
     public void uploadVideo(String title){
         this.title = title;
         System.out.println("Video uploaded");
-        notifyAllSubs();
+        notifyAllObservers();
     }
 }

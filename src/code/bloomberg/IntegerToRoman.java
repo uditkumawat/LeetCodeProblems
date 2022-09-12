@@ -49,4 +49,11 @@ public class IntegerToRoman {
 
         return sb.toString();
     }
+
+    public static void main(String args[]){
+
+        IntegerToRoman obj = new IntegerToRoman();
+
+        System.out.println(obj.intToRoman(2345));
+    }
 }

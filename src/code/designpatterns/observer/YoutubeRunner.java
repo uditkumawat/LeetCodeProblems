@@ -1,6 +1,6 @@
 package code.designpatterns.observer;
 
-//https://www.youtube.com/watch?v=98DiwRp-KZk
+//https://www.youtube.com/watch?v=Ep9_Zcgst3U&list=PL6W8uoQQ2c61X_9e6Net0WdYZidm7zooW&index=3
 public class YoutubeRunner {
 
     public static void main(String args[]) {
@@ -11,10 +11,10 @@ public class YoutubeRunner {
         Subscriber sub3 = new Subscriber("c");
         Subscriber sub4 = new Subscriber("d");
 
-        channel.subscribe(sub1);
-        channel.subscribe(sub2);
-        channel.subscribe(sub3);
-        channel.subscribe(sub4);
+        channel.add(sub1);
+        channel.add(sub2);
+        channel.add(sub3);
+        channel.add(sub4);
 
         channel.uploadVideo("MyfirstVideo");
     }
