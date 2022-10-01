@@ -1,6 +1,7 @@
 package code.blind75;
 
 //https://leetcode.com/problems/jump-game/solution/
+//https://www.youtube.com/watch?v=OjsmwsdCtX8
 //TC-O(n)
 /**Time complexity : O(n)O(n). We are doing a single pass through the nums array, hence nn steps, where nn is the length of array nums.
 

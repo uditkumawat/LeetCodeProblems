@@ -3,6 +3,9 @@ package code.google;
 import java.util.HashSet;
 import java.util.Set;
 
+//https://leetcode.com/problems/unique-email-addresses/submissions
+//TC - O(N*M)  // N is the number of string and M is max length of any string
+//SC - O(N*M)
 public class UniqueEmailAddresses {
 
     public static void main(String args[]){

@@ -1,5 +1,7 @@
 package code.google;
 
+//TC - O(N)
+//SC - O(N)
 public class LicenceKeyFormatting {
 
     public static void main(String args[]){
@@ -14,20 +16,21 @@ public class LicenceKeyFormatting {
     public String licenseKeyFormatting(String s, int k) {
 
         StringBuilder sb = new StringBuilder();
-        int count = k;
-        for(int i=s.length()-1;i>=0;i--){
-            if(s.charAt(i)=='-'){
-                continue;
-            }
-            sb.append(s.charAt(i));
-            count--;
 
-            if(count==0 && i!=0){
-                sb.append("-");
-                count=k;
+        int count = 0;
+
+        for(int i=s.length()-1;i>=0;i--){
+            char c = s.charAt(i);
+            if(c!='-'){
+                if(count==k){
+                    count = 0;
+                    sb.append("-");
+                }
+                sb.append(Character.toUpperCase(c));
+                count++;
             }
         }
 
-        return sb.reverse().toString().toUpperCase();
+        return sb.reverse().toString();
     }
 }
